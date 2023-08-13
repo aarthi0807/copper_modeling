@@ -23,15 +23,15 @@ with tab1:
         predict = st.button("Predict Selling Price")
         if predict:
             if quantity_tons and customer and thickness and width is not None:
-                with open("C:/Users/Raghavendra Kumar JR/Dump/model.pkl", "rb") as file:
+                with open("Dump/model.pkl", "rb") as file:
                     model = pickle.load(file)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/scaler.pkl", "rb") as file2:
+                with open("Dump/scaler.pkl", "rb") as file2:
                     scaler = pickle.load(file2)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/ohe1.pkl", "rb") as file3:
+                with open("Dump/ohe1.pkl", "rb") as file3:
                     ohe = pickle.load(file3)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/ohe2.pkl", "rb") as file4:
+                with open("Dump/ohe2.pkl", "rb") as file4:
                     ohe2 = pickle.load(file4)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/oe.pkl", "rb") as file5:
+                with open("Dump/oe.pkl", "rb") as file5:
                     oe = pickle.load(file5)
                 data = np.array([[np.log(float(quantity_tons)),float(customer),float(country),float(application),np.log(float(thickness)),float(width),status,item_type,int(prod_ref)]])
                 data_s = scaler.transform(data[:,:6])
@@ -60,11 +60,11 @@ with tab2:
         predict_status = st.button("Predict Status")
         if predict_status:
             if quantity_tons and customer and thickness and width and selling_price is not None:
-                with open("C:/Users/Raghavendra Kumar JR/Dump/model_c.pkl", "rb") as file:
+                with open("Dump/model_c.pkl", "rb") as file:
                     model_c = pickle.load(file)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/scale_c.pkl", "rb") as file2:
+                with open("Dump/scale_c.pkl", "rb") as file2:
                     scaler_c = pickle.load(file2)
-                with open("C:/Users/Raghavendra Kumar JR/Dump/ohe_c.pkl", "rb") as file3:
+                with open("Dump/ohe_c.pkl", "rb") as file3:
                     ohe_c = pickle.load(file3)
                 data_c = np.array([[np.log(float(quantity_tons)),float(customer),float(country),float(application),np.log(float(thickness)),float(width),np.log(float(selling_price)),item_type,int(prod_ref)]])
                 data_c_s = scaler_c.transform(data_c[:,:7])
